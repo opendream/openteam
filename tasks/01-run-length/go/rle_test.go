@@ -1,4 +1,4 @@
-package rle
+package main
 
 import "testing"
 
