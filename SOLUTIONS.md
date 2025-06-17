@@ -76,3 +76,18 @@ Indexes improve JOIN and filter performance significantly, especially for `count
 - Time spent: ~30 min
 - AI tools used: ChatGPT [index strategy and write-up support]
 
+
+### Task 02 – Fix‑the‑Bug
+[x] Done
+- Language: Python
+- Time spent: ~50 min
+- AI tools used: ChatGPT
+### SUMMARY
+
+Completed all 4 tasks in Go (plus SQL for Task 4) with focus on correctness, concurrency safety, and clean logic.
+Each task was implemented efficiently and verified with provided tests. Used Go’s standard library features like goroutines, channels, context timeouts, mutex locks, and SQL window functions. Edge cases (e.g. UTF-8 strings, file timeouts, percentile interpolation) were handled carefully to match expected outputs.
+
+Used ChatGPT for validation, write-up clarity, and troubleshooting during complex logic (especially for Task 03).
+Total time spent: ~125 min.
+
+Tried Task 02 in Python just for fun, exploring how concurrency safety works differently in another language.
