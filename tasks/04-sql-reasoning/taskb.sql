@@ -1,20 +1,3 @@
-// tasks/04‑sql‑reasoning/go/queries.go
-package main
-
-// Task A
-const SQLA = `
-SELECT
-    c.id AS campaign_id,
-    SUM(p.amount_thb) AS total_thb,
-    ROUND(1.0 * SUM(p.amount_thb) / c.target_thb, 4) AS pct_of_target
-FROM campaign c
-JOIN pledge p ON c.id = p.campaign_id
-GROUP BY c.id
-ORDER BY pct_of_target DESC;
-`
-
-// Task B
-const SQLB = `
 WITH all_pledges AS (
   SELECT 'global' AS scope, amount_thb FROM pledge
   UNION ALL
@@ -62,11 +45,3 @@ SELECT
   ) AS INT) AS p90_thb
 FROM interpolated
 ORDER BY scope;
-`
-
-var Indexes = []string{
-	`CREATE INDEX IF NOT EXISTS idx_donor_country ON donor(country);`,
-	`CREATE INDEX IF NOT EXISTS idx_donor_id ON donor(id);`,
-	`CREATE INDEX IF NOT EXISTS idx_pledge_donor_id ON pledge(donor_id);`,
-	`CREATE INDEX IF NOT EXISTS idx_pledge_amount ON pledge(amount_thb);`,
-}

@@ -52,10 +52,27 @@ Using goroutines and channels allows for high throughput without sacrificing cor
 
 
 ### Task 04 – SQL-resoning
-[] Done 
-- Language: Go
-- Approach: [EXPLAIN THE FIX]
-- Why: [WHY THIS SOLUTION]
-- Time spent: ~8 min
-- AI tools used: [IF ANY]
+[x] Done 
+- Language: Go (SQL)
+- Approach: For Task A, I computed the total pledged amount per campaign and calculated each campaign's percentage of its funding target using `SUM()` and `GROUP BY`. The result was ordered by `pct_of_target` descending.
+
+For Task B, I calculated the 90th percentile (`P90`) of pledge amounts both globally and for donors from Thailand.
+
+I used window functions (`ROW_NUMBER`, `COUNT`, `OVER`) to rank and compute each pledge's position.
+
+Then applied linear interpolation to calculate the percentile accurately using a subquery join on rank.
+
+Final result was rounded using `ROUND(..., 0)` to ensure integer output as expected in the test.
+
+I added relevant indexes to optimize query performance, especially on `donor.country`, `donor.id`, `pledge.donor_id`, and `pledge.amount_thb`.
+
+- Why: Using SQL window functions and common table expressions (CTEs) makes the logic clear, maintainable, and performant even on large datasets.
+
+Interpolation ensures accurate percentile computation instead of relying on simple LIMIT or approximation.
+
+Indexes improve JOIN and filter performance significantly, especially for `country = 'Thailand' `and pledge amount ranking.
+
+
+- Time spent: ~30 min
+- AI tools used: ChatGPT [index strategy and write-up support]
 
