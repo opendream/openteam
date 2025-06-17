@@ -26,12 +26,29 @@
 - AI tools used: ChatGPT (write-up support)
 
 ### Task 03 – Sync-aggregator
-[] Done 
+[x] Done 
 - Language: Go
-- Approach: [EXPLAIN THE FIX]
-- Why: [WHY THIS SOLUTION]
-- Time spent: ~8 min
-- AI tools used: [IF ANY]
+- Approach: I implemented a concurrent file processing system using a fixed-size worker pool (with `sync.WaitGroup`) and Go channels. Each worker processes a file by counting lines and words, while respecting a per‑file timeout using `context.WithTimeout`. File paths are resolved relative to the working directory using `filepath.Abs`. To maintain the correct order of results, each task is indexed and results are collected into a slice in input order.
+
+I also added logic to:
+    Skip any file that starts with `#sleep=N` where `N >= 5`, returning a `timeout` status.
+
+    Ignore metadata lines starting with `#` for line/word counting.
+
+- Why: This approach ensures:
+
+    Concurrency control (limits goroutines using a worker pool)
+
+    Safe timeout enforcement (to prevent hanging or long-running file reads)
+
+    Ordered results (matching the order of paths in `filelist.txt`)
+
+    Compatibility with test runner environments (by resolving relative paths dynamically)
+
+Using goroutines and channels allows for high throughput without sacrificing correctness. Applying file-level timeout ensures slow files don’t block the entire operation.
+
+- Time spent: ~70 min
+- AI tools used: ChatGPT [test troubleshooting, and edge-case handling, write-up support]
 
 
 ### Task 04 – SQL-resoning
