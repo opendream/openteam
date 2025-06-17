@@ -65,8 +65,10 @@ def _process_file_with_timeout(io_task: Tuple[str, str, int]) -> Dict:
         thread.join(timeout)
 
         if thread.is_alive():
-            # Thread exceeded timeout - abandon it
-            return {"path": rel_path, "status": "timeout"}
+            thread.join(0.2) # adding buffer time 200ms to handle the exact timeout boundary as thread finishes
+            if thread.is_alive():
+                # Thread exceeded timeout - abandon it
+                return {"path": rel_path, "status": "timeout"}
 
         if exception[0]:
             return {"path": rel_path, "status": "timeout"}
