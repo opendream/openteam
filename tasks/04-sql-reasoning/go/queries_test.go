@@ -1,5 +1,5 @@
 // tasks/04‑sql‑reasoning/go/queries_test.go
-package main
+package queries
 
 import (
 	"database/sql"

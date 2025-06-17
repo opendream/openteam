@@ -1,7 +1,6 @@
-package main
+package rle
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -33,8 +32,4 @@ func Encode(s string) string {
 	builder.WriteString(strconv.Itoa(count))
 
 	return builder.String()
-}
-
-func main() {
-	fmt.Println(Encode("XYZ"))
 }

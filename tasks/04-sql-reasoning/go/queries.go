@@ -1,5 +1,5 @@
 // tasks/04‑sql‑reasoning/go/queries.go
-package main
+package queries
 
 // Task A
 const SQLA = `

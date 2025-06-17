@@ -1,10 +1,9 @@
 // Package aggregator – stub for Concurrent File Stats Processor.
-package main
+package aggregator
 
 import (
 	"bufio"
 	"context"
-	"fmt"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -48,46 +47,6 @@ func readLines(filelistPath string) ([]string, error) {
 	}
 	return lines, scanner.Err()
 }
-
-// // Simulated file processor with timeout
-// func processFileWithTimeout(path string, timeoutSec int) Result {
-// 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeoutSec)*time.Second)
-// 	defer cancel()
-
-// 	resultChan := make(chan Result, 1)
-
-// 	go func() {
-// 		// Simulate file processing
-// 		lines, words := 0, 0
-
-// 		file, err := os.Open(path)
-// 		if err != nil {
-// 			resultChan <- Result{Path: path, Status: "timeout"} // treat error as timeout for now
-// 			return
-// 		}
-// 		defer file.Close()
-
-// 		scanner := bufio.NewScanner(file)
-// 		for scanner.Scan() {
-// 			select {
-// 			case <-ctx.Done():
-// 				return
-// 			default:
-// 				lines++
-// 				words += len(strings.Fields(scanner.Text()))
-// 			}
-// 		}
-
-// 		resultChan <- Result{Path: path, Lines: lines, Words: words, Status: "ok"}
-// 	}()
-
-// 	select {
-// 	case <-ctx.Done():
-// 		return Result{Path: path, Status: "timeout"}
-// 	case res := <-resultChan:
-// 		return res
-// 	}
-// }
 
 func processFileWithTimeout(displayPath, fullPath string, timeoutSec int) Result {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeoutSec)*time.Second)
@@ -207,17 +166,4 @@ func Aggregate(filelistPath string, workers, timeout int) ([]Result, error) {
 	}
 
 	return results, nil
-}
-
-func main() {
-	filelistPath := "tasks/03-sync-aggregator/data/filelist.txt"
-
-	res, err := Aggregate(filelistPath, 8, 2)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-	for _, r := range res {
-		fmt.Printf("%+v\n", r)
-	}
 }
