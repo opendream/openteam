@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace BuggyLib;
 
 public static class BuggyCounter
@@ -6,9 +8,6 @@ public static class BuggyCounter
 
     public static long NextId()
     {
-        long value = _current;
-        System.Threading.Thread.Sleep(0);
-        _current++;
-        return value;
+        return Interlocked.Increment(ref _current);
     }
 }
