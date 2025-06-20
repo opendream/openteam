@@ -3,12 +3,15 @@
 import threading
 import time
 
+
 _current = 0
+_lock = threading.Lock()
 
 def next_id():
-    """Returns a unique ID, incrementing the global counter."""
+    """Returns a unique ID, incrementing the global counter in a thread-safe way."""
     global _current
-    value = _current
-    time.sleep(0)
-    _current += 1
+    with _lock:
+        value = _current
+        time.sleep(0)  
+        _current += 1
     return value
