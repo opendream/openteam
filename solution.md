@@ -13,3 +13,10 @@
 - Why: When there is multiple thread that access the same value it can be a race condition which thread.lock can handle that
 - Time spent: 8 min
 - AI tools used: ChatGPT
+
+### Task 03 – 03-sync-aggregator
+- Language: python
+- Approach: Using thread executer each thread check each file ft their timeout value is more than setting then quit
+- Why: At first i try using real timeout to check and it can't pass the test eventually i use the check each file if their timeout value is more than setting then quit and it finally pass
+- Time spent: 56 min
+- AI tools used: ChatGPT
