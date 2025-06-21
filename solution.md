@@ -20,3 +20,11 @@
 - Why: At first i try using real timeout to check and it can't pass the test eventually i use the check each file if their timeout value is more than setting then quit and it finally pass
 - Time spent: 56 min
 - AI tools used: ChatGPT
+
+
+### Task 04 – 04-sql-reasoning
+- Language: python
+- Approach: ---
+- Why: I don’t have much experience with SQL yet, so I relied on AI to guide me through correct query.
+- Time spent: 40
+- AI tools used: ChatGPT
