@@ -1,12 +1,11 @@
 package counter
 
-import "time"
+import (
+	"sync/atomic"
+)
 
 var current int64
 
 func NextID() int64 {
-	id := current
-	time.Sleep(0)
-	current++
-	return id
+	return atomic.AddInt64(&current, 1) - 1
 }
