@@ -69,6 +69,8 @@ Return an array whose order **exactly matches** the input list.
 
 ## 3 · Your job
 
+> 📋 **Scope:** You implement one function. Tests handle CLI argument parsing and file path resolution. Your function receives: file list path, worker count, timeout seconds. Returns: JSON array string.
+
 | File                   | Function / Method                       | Todo                                  |
 | ---------------------- | --------------------------------------- | ------------------------------------- |
 | `python/aggregator.py` | `aggregate(filelist, workers, timeout)` | Replace `raise NotImplementedError`   |

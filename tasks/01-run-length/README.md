@@ -31,17 +31,23 @@ The tests in that folder will remain red until your function is correct.
 
 ### 2 · A  Function contract
 
-```text
-encode("")                              → ""
-encode("XYZ")                           → "X1Y1Z1"
-encode("AAAaaaBBB🦄🦄🦄🦄🦄CCCCCCCCCCCC") → "A3a3B3🦄5C12"
-encode("HAAAAPPY🦄")                    → "H1A4P2Y1🦄1"
-```
-
 | Name     | Type  | Meaning                              |
 | -------- | ----- | ------------------------------------ |
 | *Input*  | `str` | Any UTF‑8 string (may contain emoji) |
 | *Output* | `str` | Run‑length encoding `<char><count>`  |
+
+**Examples** (these cover all edge cases the tests check):
+
+| Input | Output | What it tests |
+| ----- | ------ | ------------- |
+| `""` | `""` | Empty string |
+| `"X"` | `"X1"` | Single character |
+| `"XYZ"` | `"X1Y1Z1"` | No consecutive repeats |
+| `"AAA"` | `"A3"` | Basic run |
+| `"AAAaaa"` | `"A3a3"` | Case sensitivity |
+| `"CCCCCCCCCCCC"` | `"C12"` | Multi-digit count (12) |
+| `"🦄🦄🦄"` | `"🦄3"` | Unicode / emoji |
+| `"HAAAAPPY🦄"` | `"H1A4P2Y1🦄1"` | Mixed runs + unicode |
 
 ### 2 · B  Requirements
 

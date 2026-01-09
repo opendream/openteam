@@ -60,6 +60,8 @@ Actual:   17
 
 ## 3 · Your job
 
+> 💡 **Start here:** Run the tests first—the failure output shows exactly what's going wrong.
+
 | # | What you must do                                                                                                                      | Where                      |
 | - | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | 1 | **Do *not* touch the tests.** They define the required behaviour.                                                                     | Test files                 |

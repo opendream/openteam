@@ -98,6 +98,16 @@ Tests verify that **each query performs at least one indexed search** (no full�
 
 ## 3 · Your job
 
+> 🔧 **Explore the database first:**
+> ```bash
+> sqlite3 tasks/04-sql-reasoning/donations.db
+> .schema          -- see table structure
+> .mode column     -- readable output
+> SELECT * FROM pledge LIMIT 5;
+> SELECT * FROM campaign LIMIT 5;
+> SELECT * FROM donor LIMIT 5;
+> ```
+
 | File                                       | Constant  | Expected value                                     |
 | ------------------------------------------ | --------- | -------------------------------------------------- |
 | `queries.py` / `queries.go` / `Queries.cs` | `SQL_A`   | your SELECT for Task A                             |

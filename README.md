@@ -142,42 +142,131 @@ See `tasks/04-sql-reasoning/README.md` for complete specification.
 
 ## What to include in your pull request
 
-Create **one** of the following:
-* A `SOLUTIONS.md` file at repo root **– or –**
-* A detailed PR description
+Create a `SOLUTIONS.md` file at repo root documenting your problem-solving journey.
 
-For **each** task you complete, briefly answer:
+**Why we ask for this:** We value your thought process over just working code. Your journey through each problem tells us how you'll approach real projects. This document will be discussed in your follow-up interview.
 
-| Prompt                | Why we ask                                                    |
-| --------------------- | ------------------------------------------------------------- |
-| **How** you solved it | Outline the core algorithm / fix in 1‑2 sentences            |
-| **Why** this approach | Note trade‑offs (simplicity, performance, readability, etc.) |
-| **Time spent**        | Reality check versus our estimate                             |
+### Required sections for each task
 
-Optional extras:
-* Edge cases considered
-* What you'd refine with more time
-* Tools/AI assistance used (if any)
+| Section | What to write |
+| ------- | ------------- |
+| **Approach** | 2-3 sentences explaining your algorithm/fix |
+| **Trickiest part** | What was hardest? Be specific, not generic |
+| **One bug I encountered** | A specific bug, what revealed it, how you fixed it |
+| **What I'd improve** | Concrete improvement with more time |
 
-Template:
+### Template
+
 ```markdown
-## Solution notes
+## Solution Notes
 
 ### Task 01 – Run‑Length Encoder
-- Language: Go
-- Approach: [EXPLAIN YOUR ALGORITHM]
-- Why: [TRADE-OFFS CONSIDERED]
-- Time spent: ~12 min
-- AI tools used: [IF ANY]
+
+**Language:** [Python / Go / C#]
+
+**Time spent:** ___ min
+
+**My approach:**
+[2-3 sentences explaining your algorithm]
+
+**The trickiest part:**
+[What was hardest? Unicode handling? Edge cases? Be specific.]
+
+**One bug I encountered:**
+[Describe a specific bug: what test/error revealed it, and how you fixed it.
+Example: "Empty string caused IndexError on line 8 because I accessed s[0]
+before checking length."]
+
+**What I would improve with more time:**
+[Be specific - not "add more tests" but "handle surrogate pairs" or "reduce allocations"]
+
+**Something I searched for (if any):**
+[e.g., "python string iterate unicode codepoints" — this is normal and expected!]
+
+---
 
 ### Task 02 – Fix‑the‑Bug
-- Language: Python
-- Approach: [EXPLAIN THE FIX]
-- Why: [WHY THIS SOLUTION]
-- Time spent: ~8 min
 
-[... continue for each task completed]
+**Language:** [Python / Go / C#]
+
+**Time spent:** ___ min
+
+**How I identified the race condition:**
+[What made you realize it was a race? Did you add print statements? Read the test output?]
+
+**My fix and why I chose it:**
+[What fix did you apply? What alternatives did you consider?]
+
+**One thing I learned or reinforced:**
+[About the language, concurrency, or debugging process]
+
+---
+
+### Task 03 – Sync Aggregator
+
+**Language:** [Python / Go / C#]
+
+**Time spent:** ___ min
+
+**My approach:**
+[How did you structure the worker pool? How did you handle timeouts?]
+
+**The coordination challenge:**
+[How did you maintain result order with concurrent execution?]
+
+**One bug I encountered:**
+[Specific bug and how you diagnosed it]
+
+**What I would improve with more time:**
+[Concrete improvement]
+
+---
+
+### Task 04 – SQL Reasoning
+
+**Language:** [Python / Go / C#]
+
+**Time spent:** ___ min
+
+**Task A approach:**
+[How did you calculate percentages and handle ordering?]
+
+**Task B approach:**
+[How did you compute the 90th percentile?]
+
+**Index selection reasoning:**
+[Why did you choose these specific columns to index?]
+
+**How I verified my queries:**
+[Did you use sqlite3 CLI? Print intermediate results?]
+
+---
+
+## Overall Reflection
+
+**Total time spent:** ___ min
+
+**Which task was most interesting and why?**
+[1-2 sentences]
+
+**If doing this again, what would you do differently?**
+[Process improvement, not code improvement]
+
+**AI tools used (if any):**
+[We welcome AI assistance — just tell us what you used and how.
+e.g., "Used Copilot for boilerplate", "Asked ChatGPT to explain NTILE syntax"]
 ```
+
+### Interview preparation
+
+Your SOLUTIONS.md will be discussed in the follow-up interview. Be prepared to:
+
+- **Walk through your code** referencing specific line numbers
+- **Explain a bug you encountered** and how you diagnosed it
+- **Discuss alternatives** you considered but rejected
+- **Live-modify your solution** if asked (e.g., "now make it handle X")
+
+The goal is understanding, not memorization. If you wrote the code yourself, this will be a natural conversation.
 
 ---
 
